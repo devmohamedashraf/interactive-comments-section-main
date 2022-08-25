@@ -21,6 +21,13 @@ if(localStorage.getItem('comments')){
 }else{
     axios.get('/interactive-comments-section-main/data.json').then(response => {
         comments = response.data.comments;
+        comments.map(comment => {
+            comment.createdAt = Date.now()
+            comment.replies.map(reply => {
+                return reply.createdAt = Date.now()
+            })
+            return comment
+        })
         addDataToLocalStorageFrom(comments)
         addElementsToPageFrom(comments)
     })
