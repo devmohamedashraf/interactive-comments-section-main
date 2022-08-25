@@ -19,7 +19,7 @@ if(localStorage.getItem('comments')){
     comments = JSON.parse(localStorage.getItem('comments'))
     addElementsToPageFrom(comments)
 }else{
-    axios.get('data.json').then(response => {
+    axios.get('/interactive-comments-section-main/data.json').then(response => {
         comments = response.data.comments;
         addDataToLocalStorageFrom(comments)
         addElementsToPageFrom(comments)
